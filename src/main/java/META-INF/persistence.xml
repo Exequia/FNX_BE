@@ -3,5 +3,7 @@
 	<persistence-unit name="Fenix_BE">
 		<class>com.fnx.be.models.Role</class>
 		<class>com.fnx.be.models.User</class>
+		<class>com.fnx.be.models.TaskStatus</class>
+		<class>com.fnx.be.models.Task</class>
 	</persistence-unit>
 </persistence>

@@ -3,7 +3,6 @@ package com.fnx.be.services.interfaces;
 import java.util.List;
 
 import com.fnx.be.models.User;
-import com.fnx.be.util.RestResponse;
 
 public interface IUserService {
 
