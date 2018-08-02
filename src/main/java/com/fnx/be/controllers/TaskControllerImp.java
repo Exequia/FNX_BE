@@ -1,8 +1,10 @@
 package com.fnx.be.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fnx.be.controllers.interfaces.ITaskController;
+import com.fnx.be.dto.TaskDto;
 import com.fnx.be.models.Task;
 import com.fnx.be.services.interfaces.ITaskService;
 import com.fnx.be.util.RestResponse;
@@ -28,8 +31,8 @@ public class TaskControllerImp implements ITaskController {
 	@Autowired
 	protected ObjectMapper mapper;
 
-//	@Autowired
-//	private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Autowired
 	protected ITaskService taskService;
@@ -38,24 +41,29 @@ public class TaskControllerImp implements ITaskController {
 	@RequestMapping(value = "/findById", method = RequestMethod.GET)
 	public ResponseEntity<RestResponse> getHomeTasks(@RequestParam int id) {
 
+		logger.info("/findById -> " + id);
+
 		RestResponse response = new RestResponse();
 		HttpStatus httpStatus = HttpStatus.OK;
 
 		try {
-			
+
 			List<Task> lstTasks = taskService.getHomeTasks(id);
-			
+
 			if (lstTasks.size() == 0) {
-				
+
 				response.setStatus(0);
 				response.setMsg("No se han encontrado tareas");
-				
+
 			} else {
-				
-					response.setStatus(1);
-					response.setMsg("OK");
-					response.setData(lstTasks);
-					//response.setData(this.modelMapper.map(lstTasks, TaskDto.class));
+
+				response.setStatus(1);
+				response.setMsg("OK");
+//					response.setData(lstTasks);
+//				response.setData(this.modelMapper.map(lstTasks, TaskDto.class));
+				response.setData(lstTasks.stream()
+		                .map(task -> this.convertToDto(task))
+		                .collect(Collectors.toList()));
 			}
 
 		} catch (Exception e) {
@@ -63,10 +71,14 @@ public class TaskControllerImp implements ITaskController {
 
 			response.setStatus(0);
 			response.setMsg("Se ha producido un error no controlado. Por favor contacte con el administrador");
-			
+
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
 
 		return new ResponseEntity<>(response, httpStatus);
+	}
+	
+	private TaskDto convertToDto(Task task) {
+		return modelMapper.map(task, TaskDto.class);
 	}
 }
