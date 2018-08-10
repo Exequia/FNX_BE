@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "c9ba1db2-64da-4814-8824-820fdc50e10f",
+		"name": "FNX",
+		"description": "Llamadas a proyecto FNX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "e727a209-921a-409a-b644-04716873c11f",
+			"name": "Tasks",
+			"item": [
+				{
+					"_postman_id": "9547cba1-df75-40ed-861c-6dda5bfee44a",
+					"name": "tasks/findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:777/tasks/findById?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"tasks",
+								"findById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Recupera una tarea por ID"
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "8ff7ef84-7df1-4983-a8db-8ee64d7c1003",
+					"name": "tasks/findForHome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:777/tasks/findForHome?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "777",
+							"path": [
+								"tasks",
+								"findForHome"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Recupera una lista de tareas principales"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -14,6 +14,9 @@ import javax.persistence.*;
 public class TaskStatus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	public static final String OPEN = "open";
+	public static final String CLOSE = "close";
+
 	@Id
 	private int id;
 

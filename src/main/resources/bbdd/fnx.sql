@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-07-2018 a las 06:37:54
+-- Tiempo de generación: 10-08-2018 a las 11:10:38
 -- Versión del servidor: 5.6.13
 -- Versión de PHP: 5.4.17
 
@@ -95,17 +95,18 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `body` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
-  `comment` int(11) DEFAULT NULL,
+  `comment` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `status` (`status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `title`, `date`, `body`, `status`, `comment`) VALUES
-(1, 'webInauguration', '2018-07-19 08:24:44', 'webInaugurationDesc', 1, NULL);
+(1, 'webInauguration', '2018-07-19 08:24:44', 'webInaugurationDesc', 1, NULL),
+(2, 'diagramas de experiencia', '2018-08-10 12:27:56', 'Generar diferentes diagramas de tiempo para resumir la experiencia laboral', 1, NULL);
 
 -- --------------------------------------------------------
 

@@ -33,4 +33,20 @@ public class TaskServiceImp implements ITaskService {
 		
 		return lstTasks;
 	}
+
+	@Override
+	public List<Task> findForHome(int statusId) {
+		
+		List<Task> lstTasks = null;
+		
+		try {
+			
+			lstTasks = this.taskRepository.findTop4ByTaskStatusId(statusId);
+			
+		} catch (Exception e) {
+			logger.error(e);
+		}
+		
+		return lstTasks;
+	}
 }

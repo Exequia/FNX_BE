@@ -7,4 +7,6 @@ import com.fnx.be.util.RestResponse;
 public interface ITaskController {
 
 	ResponseEntity<RestResponse> getHomeTasks(int id);
+
+	ResponseEntity<RestResponse> findForHome();
 }
