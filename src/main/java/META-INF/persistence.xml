@@ -5,10 +5,10 @@
 		<class>com.fnx.be.models.User</class>
 		<class>com.fnx.be.models.TaskStatus</class>
 		<class>com.fnx.be.models.Task</class>
-		<class>com.fnx.be.models.Job</class>
 		<class>com.fnx.be.models.JobsRole</class>
-		<class>com.fnx.be.models.JobsSkillsExperiency</class>
 		<class>com.fnx.be.models.Skill</class>
 		<class>com.fnx.be.models.SkillsExperiency</class>
+		<class>com.fnx.be.models.Job</class>
+		<class>com.fnx.be.models.JobskillsExperiencies</class>
 	</persistence-unit>
 </persistence>

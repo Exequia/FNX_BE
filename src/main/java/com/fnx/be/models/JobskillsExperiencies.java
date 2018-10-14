@@ -10,8 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="jobs_skills_experiencies")
-@NamedQuery(name="JobsSkillsExperiency.findAll", query="SELECT j FROM JobsSkillsExperiency j")
-public class JobsSkillsExperiency implements Serializable {
+@NamedQuery(name="JobskillsExperiencies.findAll", query="SELECT j FROM JobskillsExperiencies j")
+public class JobskillsExperiencies implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,16 +19,14 @@ public class JobsSkillsExperiency implements Serializable {
 
 	private String comments;
 
-	//uni-directional many-to-one association to SkillsExperiency
-	@ManyToOne
-	@JoinColumn(name="skills_experiencies_id")
-	private SkillsExperiency skillsExperiency;
+	@Column(name="skills_experiencies_id")
+	private int skillsExperienciesId;
 
-	//uni-directional many-to-one association to Job
+	//bi-directional many-to-one association to Job
 	@ManyToOne
 	private Job job;
 
-	public JobsSkillsExperiency() {
+	public JobskillsExperiencies() {
 	}
 
 	public int getId() {
@@ -47,16 +45,17 @@ public class JobsSkillsExperiency implements Serializable {
 		this.comments = comments;
 	}
 
-	public SkillsExperiency getSkillsExperiency() {
-		return this.skillsExperiency;
+	public int getSkillsExperienciesId() {
+		return this.skillsExperienciesId;
 	}
 
-	public void setSkillsExperiency(SkillsExperiency skillsExperiency) {
-		this.skillsExperiency = skillsExperiency;
+	public void setSkillsExperienciesId(int skillsExperienciesId) {
+		this.skillsExperienciesId = skillsExperienciesId;
 	}
 
 	public Job getJob() {
-		return this.job;
+//		return this.job;
+		return null;
 	}
 
 	public void setJob(Job job) {
